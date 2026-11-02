@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Linux Web Server Visualizer – Turn Linux into a Web Server</title>
+  <meta name="description" content="An interactive, animated beginner guide to converting a Linux machine into a web server with Apache, a firewall, a virtual host and HTTPS.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-mode="beginner">
+  <a class="skip" href="#main">Skip to diagram</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/favicon.svg" alt="" width="36" height="36">
+      <div>
+        <h1>Linux Web Server Visualizer</h1>
+        <p>Turn a plain Linux machine into a web server</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <div class="seg" role="group" aria-label="Explanation mode">
+        <button type="button" id="modeBeginner" aria-pressed="true">Beginner</button>
+        <button type="button" id="modeTechnical" aria-pressed="false">Technical</button>
+      </div>
+      <button type="button" id="themeBtn" class="icon-btn" aria-label="Switch to light theme">☀️</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" aria-label="Learning steps">
+      <h2>Learning steps</h2>
+      <ol id="steps" class="steps"></ol>
+
+      <div class="controls" role="group" aria-label="Playback controls">
+        <button type="button" id="playBtn" class="btn primary">▶ Auto-play</button>
+        <button type="button" id="pauseBtn" class="btn" disabled>⏸ Pause</button>
+        <button type="button" id="resetBtn" class="btn">↺ Reset</button>
+      </div>
+      <div class="progress-row">
+        <div class="progress" aria-hidden="true"><div id="progressFill"></div></div>
+        <span id="progressText" aria-live="polite">1/8</span>
+      </div>
+
+      <h2 class="legend-title">Moving objects</h2>
+      <ul id="legend" class="legend"></ul>
+    </aside>
+
+    <main id="main">
+      <section class="stage" aria-label="Architecture diagram">
+        <div id="diagramWrap" class="diagram-wrap"></div>
+      </section>
+
+      <section class="card" id="card" aria-live="polite" aria-label="Step explanation">
+        <p class="kicker" id="cardKicker">Step 1 of 8</p>
+        <h2 id="cardTitle"></h2>
+        <div class="block beginner-only">
+          <h3>🗣️ In Plain Words</h3>
+          <p id="cardPlain"></p>
+        </div>
+        <div class="block tech-only">
+          <h3>⚙️ Technical Explanation</h3>
+          <p id="cardTech"></p>
+        </div>
+        <div class="block">
+          <h3>👀 Watch the Picture</h3>
+          <p id="cardWatch"></p>
+        </div>
+      </section>
+
+      <section class="summary" aria-label="Architecture summary">
+        <h2>Architecture summary</h2>
+        <div class="summary-grid">
+          <div><strong>1</strong><span>Linux server</span></div>
+          <div><strong>1</strong><span>Apache service</span></div>
+          <div><strong>1</strong><span>Firewall</span></div>
+          <div><strong>2</strong><span>Open ports (80, 443)</span></div>
+          <div><strong>1</strong><span>Virtual host</span></div>
+          <div><strong>1</strong><span>HTTPS certificate</span></div>
+        </div>
+      </section>
+
+      <section class="glossary" aria-label="Glossary">
+        <h2>Searchable glossary</h2>
+        <label class="search">
+          <span class="sr">Search glossary</span>
+          <input type="search" id="glossSearch" placeholder="Search terms, e.g. “firewall”, “port”, “systemd”…" autocomplete="off">
+        </label>
+        <p id="glossCount" class="muted" aria-live="polite"></p>
+        <div id="glossList" class="gloss-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>Built with HTML, CSS, vanilla JavaScript and inline SVG · MIT License · IP addresses and example.com are documentation examples.</p>
+  </footer>
+
+  <script src="js/steps.js"></script>
+  <script src="js/architecture.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
